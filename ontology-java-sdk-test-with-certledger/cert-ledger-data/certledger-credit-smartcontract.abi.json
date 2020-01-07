@@ -1,0 +1,121 @@
+{
+  "hash": "0x693af31bdc6f7e0241f2bba29078fe469b26ec7c",
+  "entrypoint": "Main",
+  "functions": [
+    {
+      "name": "Name",
+      "parameters": [],
+      "returntype": "String"
+    },
+    {
+      "name": "Symbol",
+      "parameters": [],
+      "returntype": "String"
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "String"
+        },
+        {
+          "name": "args",
+          "type": "Array"
+        }
+      ],
+      "returntype": "ByteArray"
+    },
+    {
+      "name": "Spend",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "ByteArray"
+        },
+        {
+          "name": "amount",
+          "type": "Integer"
+        }
+      ],
+      "returntype": "Boolean"
+    },
+    {
+      "name": "BalanceOf",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "ByteArray"
+        }
+      ],
+      "returntype": "Integer"
+    },
+    {
+      "name": "Deploy",
+      "parameters": [
+        {
+          "name": "parent",
+          "type": "ByteArray"
+        },
+        {
+          "name": "businessSc",
+          "type": "ByteArray"
+        }
+      ],
+      "returntype": "Boolean"
+    },
+    {
+      "name": "Destroy",
+      "parameters": [],
+      "returntype": "Boolean"
+    },
+    {
+      "name": "Issue",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "ByteArray"
+        },
+        {
+          "name": "amount",
+          "type": "Integer"
+        }
+      ],
+      "returntype": "Boolean"
+    }
+  ],
+  "events": [
+    {
+      "name": "transfer",
+      "parameters": [
+        {
+          "name": "arg1",
+          "type": "ByteArray"
+        },
+        {
+          "name": "arg2",
+          "type": "ByteArray"
+        },
+        {
+          "name": "arg3",
+          "type": "Integer"
+        }
+      ],
+      "returntype": "Void"
+    },
+    {
+      "name": "refund",
+      "parameters": [
+        {
+          "name": "arg1",
+          "type": "ByteArray"
+        },
+        {
+          "name": "arg2",
+          "type": "Integer"
+        }
+      ],
+      "returntype": "Void"
+    }
+  ]
+}

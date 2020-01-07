@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;NEO SMART_CONTRACT_TEST</DefineConstants>
+    <PlatformTarget>x64</PlatformTarget>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>dotnet /Users/ramazangirgin/certledger/ontio_github/neo-compiler/neon/bin/Debug/netcoreapp2.1/neon.dll --compatible no nep8 ${TargetDir}/CertLedgerBusinessSCTemplate_NeoVM.dll</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetDir}/CertLedgerBusinessSCTemplate_NeoVM.abi.json ${SolutionDir}/../ontology-java-sdk-test-with-certledger/cert-ledger-data/CertLedgerBusinessSCTemplate_NeoVM.abi.json</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetDir}/CertLedgerBusinessSCTemplate_NeoVM.avm ${SolutionDir}/../ontology-java-sdk-test-with-certledger/cert-ledger-data/CertLedgerBusinessSCTemplate_NeoVM.avm</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE;NEO SMART_CONTRACT_TEST;RELEASE;NETCOREAPP;NETCOREAPP2_1</DefineConstants>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>dotnet /Users/ramazangirgin/certledger/ontio_github/neo-compiler/neon/bin/Debug/netcoreapp2.1/neon.dll --compatible no nep8 ${TargetDir}/CertLedgerBusinessSCTemplate_NeoVM.dll</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetDir}/CertLedgerBusinessSCTemplate_NeoVM.abi.json ${SolutionDir}/../ontology-java-sdk-test-with-certledger/cert-ledger-data/CertLedgerBusinessSCTemplate_NeoVM.abi.json</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetDir}/CertLedgerBusinessSCTemplate_NeoVM.avm ${SolutionDir}/../ontology-java-sdk-test-with-certledger/cert-ledger-data/CertLedgerBusinessSCTemplate_NeoVM.avm</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Neo.SmartContract.Framework, Version=2.7.3.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>lib\Neo.SmartContract.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="EmptyClass.cs" />
+    <Compile Remove="CertLedgerTestProject\**" />
+    <Compile Remove="src\io\certledger\smartcontract\allinone\**" />
+    <Compile Remove="src\io\certledger\smartcontract\classperfile\**" />
+    <Compile Remove="src\io\certledger\smartcontract\platform\netcore\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BouncyCastle.NetCore" Version="1.8.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="CertLedgerTestProject\**" />
+    <EmbeddedResource Remove="src\io\certledger\smartcontract\allinone\**" />
+    <EmbeddedResource Remove="src\io\certledger\smartcontract\classperfile\**" />
+    <EmbeddedResource Remove="src\io\certledger\smartcontract\platform\netcore\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="CertLedgerTestProject\**" />
+    <None Remove="src\io\certledger\smartcontract\allinone\**" />
+    <None Remove="src\io\certledger\smartcontract\classperfile\**" />
+    <None Remove="src\io\certledger\smartcontract\platform\netcore\**" />
+    <None Remove="sh\compile_to_avm.sh" />
+  </ItemGroup>
+</Project>
